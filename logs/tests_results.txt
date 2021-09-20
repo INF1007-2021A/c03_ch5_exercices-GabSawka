@@ -5,6 +5,6 @@ test_summation (__main__.TestExercice) ... ok
 test_verify_ages (__main__.TestExercice) ... ok
 
 ----------------------------------------------------------------------
-Ran 5 tests in 0.004s
+Ran 5 tests in 0.007s
 
 OK
