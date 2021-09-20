@@ -56,21 +56,26 @@ def use_continue() -> None:
 def verify_ages(groups: List[List[int]]) -> List[bool]:
     status=[]
     for i in range(len(groups)):
-        group_status=True
-        old=False
-        if(len(groups[i])>10 and len(groups[i])<=3):
-            group_status=False
+        age_status=True
+        nb_status=True
+        old_age=False
+        gold_age=False
+        if(len(groups[i])>10 or len(groups[i])<=3):
+            nb_status=False
         for j in range(len(groups[i])):
             if(groups[i][j]<18):
-                group_status=False
+                age_status=False
             if(groups[i][j]>70):
-                old=True
-            if(groups[i][j]==50 and old):
-                group_status=False
+                old_age=True
+            if(groups[i][j]==50):
+                gold_age=True
+            if(gold_age and old_age):
+                age_status=False
             if(groups[i][j]==25):
-                group_status=True
+                age_status=True
                 break
-        status.append(group_status)
+        
+        status.append((age_status==True) and (nb_status==True))
     return status
 
 
