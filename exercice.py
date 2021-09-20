@@ -3,32 +3,75 @@
 
 
 from typing import List
-
+import math 
 
 def convert_to_absolute(number: float) -> float:
-    return 0
+    if number<0:
+        number *=-1
+    return number
 
 
 def use_prefixes() -> List[str]:
     prefixes, suffixe = 'JKLMNOPQ', 'ack'
+    names_list=[]
+    for letter in prefixes:
+        names_list.append(letter+suffixe)
 
-    return [""]
+    return names_list
 
+def is_prime(nb:int)->bool:
+    prime = True
+    for i in range(2,math.ceil(nb/2)+1):
+        if(nb%i==0):
+            prime=False
+    return prime
 
 def prime_integer_summation() -> int:
-    return 0
+    sum=0
+    nb_prime =0
+    nb=2
+    while nb_prime<100:
+        if is_prime(nb):
+            sum+=nb
+            nb_prime+=1
+        nb+=1   
+    return sum
 
 
 def factorial(number: int) -> int:
-    return 0
+    result=1
+    for i in range(1,number+1):
+        result*=i
+    return result
 
 
 def use_continue() -> None:
-    pass
+    for i in range(1,10+1):
+        if i==5:
+            continue
+        else:
+            print(i)
 
 
 def verify_ages(groups: List[List[int]]) -> List[bool]:
-    return []
+    status=[]
+    for i in range(len(groups)):
+        group_status=True
+        old=False
+        if(len(groups[i])>10 and len(groups[i])<=3):
+            group_status=False
+        for j in range(len(groups[i])):
+            if(groups[i][j]<18):
+                group_status=False
+            if(groups[i][j]>70):
+                old=True
+            if(groups[i][j]==50 and old):
+                group_status=False
+            if(groups[i][j]==25):
+                group_status=True
+                break
+        status.append(group_status)
+    return status
 
 
 def main() -> None:
